@@ -1,4 +1,4 @@
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using MongoDBMigrationsTeste.Entidades;
 
 namespace MongoDBMigrationsTeste
@@ -7,6 +7,16 @@ namespace MongoDBMigrationsTeste
   {
     static async Task Main(string[] args)
     {
+      var test = new MongoTeste();
+
+      // Conecta no MongoDB
+      test.Connect();
+
+      await test.GetCollections();
+
+      test.RunMigrations();
+
+      await test.GetCollections();
     }
   }
 }
